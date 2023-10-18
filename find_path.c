@@ -17,29 +17,29 @@ char *search_path(char *command)
 
 	if (stat(command, &info) == 0)
 	{
-		result = strdup(command);
+		result = _strdup(command);
 		return (result);
 	}
-	path_cpy = strdup(path);
+	path_cpy = _strdup(path);
 	token = strtok(path_cpy, ":");
 	while (token != NULL)
 	{
-		int path_len = strlen(token);
+		int path_len = _strlen(token);
 
 		if (token[path_len - 1] != '/')
 		{
 			path_concat = malloc(path_len + 2);
-			strcpy(path_concat, token);
-			strcat(path_concat, "/");
+			_strcpy(path_concat, token);
+			_strcat(path_concat, "/");
 		}
 		else
 		{
-			path_concat = strdup(token);
+			path_concat = _strdup(token);
 		}
 		strcat(path_concat, command);
 		if (stat(path_concat, &info) == 0)
 		{
-			result = strdup(path_concat);
+			result = _strdup(path_concat);
 			free(path_concat);
 			break;
 		}
