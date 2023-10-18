@@ -8,7 +8,7 @@
 
 char *get_env(char *env_var)
 {
-	int i = 0, j =0;
+	int i = 0, j = 0;
 	int match;
 
 	while (environ[i])
@@ -17,16 +17,16 @@ char *get_env(char *env_var)
 
 		while (environ[i][j] != '=' && env_var[j] != '\0')
 		{
-			if (environ[i][j] != env_var[j]) 
+			if (environ[i][j] != env_var[j])
 			{
-                match = 0;
-                break;
-            }
-            j++;
+				match = 0;
+				break;
+			}
+			j++;
 		}
-		if (match == 1 && environ[i][j] == '=') 
+		if (match == 1 && environ[i][j] == '=')
 		{
-            return &(environ[i][j + 1]);
+			return (&(environ[i][j + 1]));
 		}
 		i++;
 	}
@@ -35,7 +35,7 @@ char *get_env(char *env_var)
 
 /**
  * _envprint - prints environment
-*/
+ */
 void _envprint(void)
 {
 	int i = 0;
