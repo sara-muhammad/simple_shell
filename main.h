@@ -20,7 +20,7 @@ char *get_env(char *env_var);
 void _envprint(void);
 int execmd(char **args);
 int blank_line(char *buff);
-
+void *_calloc(unsigned int nmemb, unsigned int size);
 int _putchar(char c);
 void _puts(char *str);
 

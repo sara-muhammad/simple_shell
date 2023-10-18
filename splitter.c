@@ -14,7 +14,7 @@ char **_split(char *str, char *sep)
 	int i = 0;
 	int max_tokens = 100;
 
-	split_str = (char **)malloc(max_tokens * sizeof(char *));
+	split_str = (char **)_calloc(max_tokens, sizeof(char *));
 	if (!split_str)
 	{
 		free(split_str);

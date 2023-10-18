@@ -8,9 +8,9 @@
 
 int blank_line(char *buffer)
 {
-	int j;
+	int j = 0;
 
-	while (buffer)
+	while (buffer[j])
 	{
 		if (buffer[j] != ' ')
 			return (0);
