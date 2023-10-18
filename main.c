@@ -37,7 +37,7 @@ int main(void)
 			continue;
 		}
 
-		args = _split(buff, "\t\n");
+		args = _split(buff, " ");
 		args[0] = search_path(args[0]);
 
 		if (args[0] != NULL)
