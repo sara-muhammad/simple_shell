@@ -15,7 +15,7 @@ int execmd(char **args)
 	if (pid < 0	)
 	{
 		perror("Fork error");
-		continue;
+		 exit(EXIT_FAILURE);
 	}
 	else if (pid == 0)
 	{
