@@ -1,9 +1,7 @@
 #include "main.h"
-
 /**
  * _strdup - duplicates a string
  * @str: the string to duplicate
- *
  * Return: pointer to the duplicated string
  */
 char *_strdup(const char *str)
@@ -22,20 +20,16 @@ char *_strdup(const char *str)
 		ret[length] = *--str;
 	return (ret);
 }
-
-
 /**
  *_putchar - print character to stdout
  *@c : character to print
  *Return: on sucees 1
  *On error, -1 is returned, and errno is set appropriately.
  */
-
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-
 /**
  *_puts - prints an input string
  *@str: the string to be printed
@@ -54,3 +48,4 @@ void _puts(char *str)
 		i++;
 	}
 }
+

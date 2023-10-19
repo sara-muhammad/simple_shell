@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 
 /*PROTOTYPES*/
+int _hash(char *buff);
 char *_strdup(const char *str);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);

@@ -31,7 +31,7 @@ int main(void)
 			continue;
 		}
 
-		if (blank_line(buff) == 1)
+		if (blank_line(buff) == 1 || _hash(buff) == 0)
 		{
 			exit_status = 0;
 			continue;
