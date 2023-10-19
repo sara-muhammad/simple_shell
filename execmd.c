@@ -12,7 +12,7 @@ int execmd(char **args)
 	int status;
 
 	pid = fork();
-	if (pid < 0	)
+	if (pid < 0)
 	{
 		perror("Fork error");
 		 exit(EXIT_FAILURE);
