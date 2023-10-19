@@ -1,1 +1,1 @@
-this project is mimic simple shell
+readme
