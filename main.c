@@ -2,8 +2,8 @@
 
 /**
  * main - entry point
- * @ac: number of args
- * @av: arg vector
+ * @count: number of args
+ * @argv: arg vector
  * Return: 0 on success
  */
 int main(int count, char **argv)
@@ -12,9 +12,9 @@ int main(int count, char **argv)
 	int r = 2;
 
 	asm ("mov %1, %0\n\t"
-		"add $3, %0"
-		: "=r" (r)
-		: "r" (r));
+			"add $3, %0"
+			: "=r" (r)
+			: "r" (r));
 
 	if (count == 2)
 	{
