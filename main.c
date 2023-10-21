@@ -9,12 +9,8 @@
 int main(int count, char **argv)
 {
 	info_t info[] = { INFO_INIT };
-	int r = 2;
+	int r = 0;
 
-	asm ("mov %1, %0\n\t"
-			"add $3, %0"
-			: "=r" (r)
-			: "r" (r));
 	if (count == 2)
 	{
 		r = open(argv[1], O_RDONLY);
