@@ -8,13 +8,13 @@
  */
 int main(int count, char **argv)
 {
-	info_t info[] = { INFO_INIT };
-	int r = 0;
+	info_t foo[] = { INFO_INIT };
+	int i = 0;
 
 	if (count == 2)
 	{
-		r = open(argv[1], O_RDONLY);
-		if (r == -1)
+		i = open(argv[1], O_RDONLY);
+		if (i == -1)
 		{
 			if (errno == EACCES)
 				exit(126);
@@ -29,10 +29,10 @@ int main(int count, char **argv)
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readfd = r;
+		foo->readfd = i;
 	}
-	list_pop(info);
-	history_read(info);
-	loop(info, argv);
+	list_pop(foo);
+	history_read(foo);
+	loop(foo, argv);
 	return (EXIT_SUCCESS);
 }
