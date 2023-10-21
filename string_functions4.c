@@ -6,7 +6,7 @@
  * @d: the delimeter string
  * Return: a pointer to an array of strings, or NULL on failure
  */
-char **strtow(char *str, char *d)
+char **str_to_w(char *str, char *d)
 {
 	int i, j, k, m, numwords = 0;
 	char **s;
@@ -76,12 +76,12 @@ char *_strncpy(char *dest, char *src, int n)
 	return (s);
 }
 /**
- * **strtow2 - splits a string into words
+ * **str_to_w2 - splits a string into words
  * @str: the input string
  * @d: the delimeter
  * Return: a pointer to an array of strings, or NULL on failure
  */
-char **strtow2(char *str, char d)
+char **str_to_w2(char *str, char d)
 {
 	int i, j, k, m, numwords = 0;
 	char **s;

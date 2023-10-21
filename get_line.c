@@ -1,20 +1,19 @@
 #include "main.h"
 
 /**
- * input_buf - buffers chained commands
+ * _inputbuf - buffers chained commands
  * @info: parameter struct
  * @buf: address of buffer
  * @len: address of len var
  * Return: bytes read
  */
-ssize_t input_buf(info_t *info, char **buf, size_t *len)
+ssize_t _inputbuf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t r = 0;
 	size_t len_p = 0;
 
-	if (!*len) /* if nothing left in the buffer, fill it */
+	if (!*len)
 	{
-		/*bfree((void **)info->cmd_buf);*/
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
@@ -27,13 +26,12 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 		{
 			if ((*buf)[r - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0'; /* remove trailing newline */
+				(*buf)[r - 1] = '\0';
 				r--;
 			}
 			info->linecount_flag = 1;
 			remove_comments(*buf);
 			build_history_list(info, *buf, info->histcount++);
-			/* if (_strchr(*buf, ';')) is this a command chain? */
 			{
 				*len = r;
 				info->cmd_buf = buf;
@@ -56,7 +54,7 @@ ssize_t get_input(info_t *info)
 	char **buf_p = &(info->arg), *p;
 
 	_putchar(BUF_FLUSH);
-	r = input_buf(info, &buf, &len);
+	r = _inputbuf(info, &buf, &len);
 	if (r == -1)
 		return (-1);
 	if (len)
@@ -67,7 +65,7 @@ ssize_t get_input(info_t *info)
 		check_chain(info, buf, &j, i, len);
 		while (j < len)
 		{
-			if (is_chain(info, buf, &j))
+			if (_chain(info, buf, &j))
 				break;
 			j++;
 		}
@@ -87,14 +85,14 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf - reads a buffer
+ * buf_read - reads a buffer
  * @info: parameter struct
  * @buf: buffer
  * @i: size
  *
  * Return: r
  */
-ssize_t read_buf(info_t *info, char *buf, size_t *i)
+ssize_t buf_read(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
 
@@ -128,14 +126,14 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (i == len)
 		i = len = 0;
 
-	r = read_buf(info, buf, &len);
+	r = buf_read(info, buf, &len);
 	if (r == -1 || (r == 0 && len == 0))
 		return (-1);
 
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
 	new_p = _realloc(p, s, s ? s + k : k + 1);
-	if (!new_p) /* MALLOC FAILURE! */
+	if (!new_p)
 		return (p ? free(p), -1 : -1);
 
 	if (s)

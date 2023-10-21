@@ -86,10 +86,10 @@ typedef struct passinfo
 {0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
-/* file-io.c */
-int read_history(info_t *info);
+/* file-io._c */
+int history_read(info_t *info);
 int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
+int history_read(info_t *info);
 char *get_history_file(info_t *info);
 int write_history(info_t *info);
 /* liststring.c module */
@@ -105,16 +105,16 @@ ssize_t get_node_index(list_t *, list_t *);
 size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
 /* ch.c */
-int replace_vars(info_t *);
-int replace_string(char **, char *);
-int is_chain(info_t *, char *, size_t *);
+int _replacevars(info_t *);
+int _replace(char **, char *);
+int _chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
+int _replacealias(info_t *);
 /* shell.c */
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+void search_cmd(info_t *);
+void forkcmd(info_t *);
 int loop(info_t *, char **);
-int find_builtin(info_t *);
+int check_builtin(info_t *);
 /* get_path.c */
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
@@ -141,8 +141,8 @@ char *_strncpy(char *, char *, int);
 char *_strchr(char *, char);
 char *_strncat(char *, char *, int);
 /* more strings.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+char **str_to_w(char *, char *);
+char **str_to_w2(char *, char);
 /* memory.c */
 void *_realloc(void *, unsigned int, unsigned int);
 char *_memset(char *, char, unsigned int);
@@ -161,26 +161,28 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 /* builtin.c */
-int _mycd(info_t *);
-int _myhelp(info_t *);
-int _myexit(info_t *);
+int _cd(info_t *);
+int _help(info_t *);
+int my_exit(info_t *);
 /* builtin2.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
+int _setalias(info_t *info, char *str);
+int _unsetalias(info_t *info, char *str);
+int _history(info_t *);
+int _alias(info_t *);
 /*get_line.c module*/
 void sigintHandler(int);
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
 /* param.c module */
-void free_info(info_t *, int);
-void clear_info(info_t *);
-void set_info(info_t *, char **);
+void info_free(info_t *, int);
+void _clear(info_t *);
+void _info(info_t *, char **);
 /* enviroment.c module */
-int _myenv(info_t *);
-int _mysetenv(info_t *);
+int _env(info_t *);
+int set_env(info_t *);
 char *_getenv(info_t *, const char *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
+int unset_env(info_t *);
+int list_pop(info_t *);
 /* enviroment2.c module */
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);

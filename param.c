@@ -1,17 +1,17 @@
 #include "main.h"
 /**
- * set_info - initializes info_t struct
+ * _info - initializes info_t struct
  * @info: struct address
  * @av: argument vector
  */
-void set_info(info_t *info, char **av)
+void _info(info_t *info, char **av)
 {
 	int i = 0;
 
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = strtow(info->arg, " \t");
+		info->argv = str_to_w(info->arg, " \t");
 		if (!info->argv)
 		{
 
@@ -26,17 +26,17 @@ void set_info(info_t *info, char **av)
 			;
 		info->argc = i;
 
-		replace_alias(info);
-		replace_vars(info);
+		_replacealias(info);
+		_replacevars(info);
 	}
 }
 
 /**
- * free_info - frees info_t struct fields
+ * info_free - frees info_t struct fields
  * @info: struct address
  * @all: true if freeing all fields
  */
-void free_info(info_t *info, int all)
+void info_free(info_t *info, int all)
 {
 	ffree(info->argv);
 	info->argv = NULL;
@@ -60,10 +60,10 @@ void free_info(info_t *info, int all)
 	}
 }
 /**
- * clear_info - initializes info_t struct
+ * _clear - initializes info_t struct
  * @info: struct address
  */
-void clear_info(info_t *info)
+void _clear(info_t *info)
 {
 	info->arg = NULL;
 	info->argv = NULL;

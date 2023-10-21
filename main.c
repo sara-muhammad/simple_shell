@@ -15,7 +15,6 @@ int main(int count, char **argv)
 			"add $3, %0"
 			: "=r" (r)
 			: "r" (r));
-
 	if (count == 2)
 	{
 		r = open(argv[1], O_RDONLY);
@@ -36,8 +35,8 @@ int main(int count, char **argv)
 		}
 		info->readfd = r;
 	}
-	populate_env_list(info);
-	read_history(info);
+	list_pop(info);
+	history_read(info);
 	loop(info, argv);
 	return (EXIT_SUCCESS);
 }

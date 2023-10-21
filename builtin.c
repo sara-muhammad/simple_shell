@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _myexit - exits the shell
+ * my_exit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
  *  Return: exits with a given exit status 0
  */
-int _myexit(info_t *info)
+int my_exit(info_t *info)
 {
 	int exitcheck;
 
@@ -28,11 +28,11 @@ int _myexit(info_t *info)
 }
 
 /**
- * _mycd - changes the current directory of the process
+ * _cd - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
  *  Return: Always 0
  */
-int _mycd(info_t *info)
+int _cd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
@@ -77,17 +77,17 @@ int _mycd(info_t *info)
 }
 
 /**
- * _myhelp - changes the current directory of the process
+ * _help - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
  *  Return: Always 0
  */
-int _myhelp(info_t *info)
+int _help(info_t *info)
 {
 	char **arg_array;
 
 	arg_array = info->argv;
 	_puts("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array); /* temp att_unused workaround */
+		_puts(*arg_array);
 	return (0);
 }
